@@ -51,6 +51,36 @@ In high-pressure production environments, manual incident response is a bottlene
 - **Identity:** OIDC / IAM (Least-privilege)
 - **Observability:** CloudWatch, EventBridge, SNS
 
+## Getting Started
+
+### Prerequisites
+
+- AWS CLI configured with appropriate permissions.
+- Terraform >= 1.5.0 installed.
+- Python 3.11 installed.
+
+### Deployment
+
+1.  **Initialize Remote State:**
+    Run the Terraform configuration in `modules/global/state.tf` to create the S3 bucket and DynamoDB table for state management.
+
+2.  **Configure OIDC:**
+    Deploy the OIDC module in `modules/global/oidc.tf` to establish the trust relationship between GitHub and AWS.
+
+3.  **Deploy Environment:**
+    Navigate to `environments/dev` and execute:
+    ```bash
+    terraform init
+    terraform apply
+    ```
+
+### Simulation
+
+To test the remediation loop without a real incident, use the provided simulation script:
+```bash
+python tests/simulate_incident.py --sfn-arn <STATE_MACHINE_ARN> --instance-id <INSTANCE_ID>
+```
+
 ## Implementation Roadmap
 
 See [ROADMAP.md](./ROADMAP.md) for a detailed phase-by-phase breakdown.
