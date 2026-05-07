@@ -1,5 +1,35 @@
 # Detection Module - EventBridge Rules to trigger remediation
 
+# Dead Letter Queue for failed EventBridge deliveries
+resource "aws_sqs_queue" "eventbridge_dlq" {
+  name                      = "remediation-detection-dlq"
+  message_retention_seconds = 1209600 # 14 days
+  sqs_managed_sse_enabled   = true
+}
+
+resource "aws_sqs_queue_policy" "dlq_policy" {
+  queue_url = aws_sqs_queue.eventbridge_dlq.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sqs:SendMessage"
+        Effect = "Allow"
+        Principal = {
+          Service = "events.amazonaws.com"
+        }
+        Resource = aws_sqs_queue.eventbridge_dlq.arn
+        Condition = {
+          ArnEquals = {
+            "aws:SourceArn" = aws_cloudwatch_event_rule.high_cpu_trigger.arn
+          }
+        }
+      }
+    ]
+  })
+}
+
 # IAM Role for EventBridge to start Step Functions
 resource "aws_iam_role" "eventbridge" {
   name = "remediation-detection-role"
@@ -79,6 +109,10 @@ resource "aws_cloudwatch_event_target" "step_function" {
   target_id = "TriggerStepFunction"
   arn       = var.state_machine_arn
   role_arn  = aws_iam_role.eventbridge.arn
+
+  dead_letter_config {
+    arn = aws_sqs_queue.eventbridge_dlq.arn
+  }
 
   # Map the instance ID from the alarm/context to the Step Function input
   input_transformer {

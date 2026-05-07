@@ -1,7 +1,8 @@
 # Notification Module - Alerts and Audit Trails
 
 resource "aws_sns_topic" "alerts" {
-  name = "remediation-alerts-topic"
+  name              = "remediation-alerts-topic"
+  kms_master_key_id = var.kms_key_arn
 }
 
 resource "aws_sns_topic_policy" "default" {

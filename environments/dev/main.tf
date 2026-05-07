@@ -20,7 +20,8 @@ module "remediation" {
 }
 
 module "notification" {
-  source = "../../modules/terraform-aws-notification-engine"
+  source      = "../../modules/terraform-aws-notification-engine"
+  kms_key_arn = module.global_infra.kms_key_arn
 }
 
 module "orchestrator" {

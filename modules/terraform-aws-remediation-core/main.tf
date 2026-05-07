@@ -6,7 +6,10 @@ resource "aws_security_group" "quarantine" {
   description = "Restricted security group for isolated instances"
   vpc_id      = var.vpc_id
 
-  # No ingress or egress rules defined = default deny all
+  # Explicitly deny all ingress and egress
+  ingress = []
+  egress  = []
+
   tags = {
     Name = "quarantine-sg"
     Project = "aws-automated-remediation"

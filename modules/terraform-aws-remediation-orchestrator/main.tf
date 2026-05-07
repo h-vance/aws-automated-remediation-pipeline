@@ -35,6 +35,16 @@ resource "aws_iam_policy" "step_functions" {
         Resource = [
           var.alerts_topic_arn
         ]
+      },
+      {
+        Action = [
+          "xray:PutTraceSegments",
+          "xray:PutTelemetryRecords",
+          "xray:GetSamplingRules",
+          "xray:GetSamplingTargets"
+        ]
+        Effect   = "Allow"
+        Resource = "*"
       }
     ]
   })
@@ -48,6 +58,10 @@ resource "aws_iam_role_policy_attachment" "step_functions" {
 resource "aws_sfn_state_machine" "remediation" {
   name     = "remediation-orchestrator"
   role_arn = aws_iam_role.step_functions.arn
+
+  tracing_configuration {
+    enabled = true
+  }
 
   definition = jsonencode({
     Comment = "Orchestration for Automated Incident Remediation"
