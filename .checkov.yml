@@ -1,0 +1,11 @@
+# Checkov configuration file
+check:
+  - CKV_AWS_*
+skip-check:
+  - CKV_AWS_115 # Lambda function not configured with a dead letter queue (handled by Step Functions)
+  - CKV_AWS_116 # Lambda function not configured with a dead letter queue (handled by Step Functions)
+  - CKV_AWS_173 # Check encryption for Lambda env vars (KMS key handled in Global module)
+quiet: true
+soft-fail: false
+framework:
+  - terraform
