@@ -1,3 +1,7 @@
+output "remediation_lambda_arn" {
+  value = aws_lambda_function.remediation.arn
+}
+
 output "remediation_lambda_name" {
   value = aws_lambda_function.remediation.function_name
 }

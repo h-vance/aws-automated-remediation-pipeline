@@ -23,6 +23,18 @@ module "notification" {
   source = "../../modules/terraform-aws-notification-engine"
 }
 
+module "orchestrator" {
+  source                 = "../../modules/terraform-aws-remediation-orchestrator"
+  remediation_lambda_arn = module.remediation.remediation_lambda_arn
+  alerts_topic_arn       = module.notification.alerts_topic_arn
+}
+
+module "detection" {
+  source            = "../../modules/terraform-aws-remediation-detection"
+  state_machine_arn = module.orchestrator.state_machine_arn
+  test_instance_id  = "i-1234567890abcdef0" # Placeholder test instance
+}
+
 output "github_role_arn" {
   value = module.global_infra.github_actions_role_arn
 }
@@ -33,4 +45,8 @@ output "remediation_lambda_name" {
 
 output "alerts_topic_arn" {
   value = module.notification.alerts_topic_arn
+}
+
+output "state_machine_arn" {
+  value = module.orchestrator.state_machine_arn
 }
