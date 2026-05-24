@@ -80,7 +80,7 @@ resource "aws_cloudwatch_metric_alarm" "ec2_cpu" {
   statistic           = "Average"
   threshold           = "90"
   alarm_description   = "This metric monitors ec2 cpu utilization"
-  
+
   # Note: In a real scenario, this would target specific instances or an ASG
   dimensions = {
     InstanceId = var.test_instance_id
@@ -93,12 +93,12 @@ resource "aws_cloudwatch_event_rule" "high_cpu_trigger" {
   description = "Triggers remediation state machine when high CPU alarm is raised"
 
   event_pattern = jsonencode({
-    "source": ["aws.cloudwatch"],
-    "detail-type": ["CloudWatch Alarm State Change"],
-    "detail": {
-      "alarmName": [aws_cloudwatch_metric_alarm.ec2_cpu.alarm_name],
-      "state": {
-        "value": ["ALARM"]
+    "source" : ["aws.cloudwatch"],
+    "detail-type" : ["CloudWatch Alarm State Change"],
+    "detail" : {
+      "alarmName" : [aws_cloudwatch_metric_alarm.ec2_cpu.alarm_name],
+      "state" : {
+        "value" : ["ALARM"]
       }
     }
   })

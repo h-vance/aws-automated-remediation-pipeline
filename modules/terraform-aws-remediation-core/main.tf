@@ -11,7 +11,7 @@ resource "aws_security_group" "quarantine" {
   egress  = []
 
   tags = {
-    Name = "quarantine-sg"
+    Name    = "quarantine-sg"
     Project = "aws-automated-remediation"
   }
 }

@@ -79,7 +79,7 @@ resource "aws_sfn_state_machine" "remediation" {
         Type = "Choice"
         Choices = [
           {
-            Variable = "$.analysis.can_remediate"
+            Variable      = "$.analysis.can_remediate"
             BooleanEquals = true
             Next          = "ExecuteRemediation"
           }
@@ -87,7 +87,7 @@ resource "aws_sfn_state_machine" "remediation" {
         Default = "NotifyFailure"
       }
       ExecuteRemediation = {
-        Type = "Task"
+        Type     = "Task"
         Resource = var.remediation_lambda_arn
         Retry = [
           {
@@ -106,7 +106,7 @@ resource "aws_sfn_state_machine" "remediation" {
         ]
       }
       NotifySuccess = {
-        Type = "Task"
+        Type     = "Task"
         Resource = "arn:aws:states:::sns:publish"
         Parameters = {
           TopicArn = var.alerts_topic_arn
@@ -119,7 +119,7 @@ resource "aws_sfn_state_machine" "remediation" {
         End = true
       }
       NotifyFailure = {
-        Type = "Task"
+        Type     = "Task"
         Resource = "arn:aws:states:::sns:publish"
         Parameters = {
           TopicArn = var.alerts_topic_arn

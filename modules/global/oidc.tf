@@ -25,7 +25,7 @@ resource "aws_iam_role" "github_actions" {
         }
         Condition = {
           StringLike = {
-            "token.actions.githubusercontent.com:sub": "repo:h-vance/aws-automated-remediation-pipeline:*"
+            "token.actions.githubusercontent.com:sub" : "repo:h-vance/aws-automated-remediation-pipeline:*"
           }
         }
       }
