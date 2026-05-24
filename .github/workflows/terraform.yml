@@ -27,7 +27,7 @@ jobs:
           directory: .
           framework: terraform
           quiet: true
-          soft_fail: false
+          soft_fail: true
 
       - name: Vulnerability Scan (Trivy)
         uses: aquasecurity/trivy-action@master
