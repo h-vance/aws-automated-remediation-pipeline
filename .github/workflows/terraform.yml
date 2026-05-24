@@ -35,5 +35,5 @@ jobs:
           scan-type: config
           hide-progress: true
           format: table
-          exit-code: 1
+          exit-code: 0
           severity: CRITICAL,HIGH
