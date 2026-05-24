@@ -25,7 +25,7 @@ def simulate_incident(state_machine_arn, instance_id):
         )
         
         execution_arn = response['executionArn']
-        print(f"Execution started successfully.")
+        print("Execution started successfully.")
         print(f"Execution ARN: {execution_arn}")
         print("\nMonitor the execution in the AWS Console or check the SNS/Slack alerts.")
         

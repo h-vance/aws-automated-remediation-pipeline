@@ -50,7 +50,7 @@ def lambda_handler(event, context):
 
         # 1. Modify the instance's security groups to the quarantine group
         logger.info(f"Isolating instance: {instance_id}")
-        response = ec2.modify_instance_attribute(
+        ec2.modify_instance_attribute(
             InstanceId=instance_id,
             Groups=[quarantine_sg_id]
         )
