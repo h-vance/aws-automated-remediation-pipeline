@@ -2,6 +2,8 @@
 
 **Event-Driven Incident Response & Cloud Operations Automation**
 
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=FFFFFF)](https://python.org)&nbsp;[![Terraform](https://img.shields.io/badge/Terraform-844FBA?style=for-the-badge&logo=Terraform&logoColor=FFFFFF)](https://terraform.io)&nbsp;[![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=GitHub+Actions&logoColor=FFFFFF)](https://github.com/features/actions)
+
 This repository implements a production-grade, event-driven remediation system on AWS. It automates the detection, isolation, and resolution of common infrastructure failures and security threats, reducing MTTR (Mean Time To Resolution) from minutes to seconds.
 ## Architecture
 
