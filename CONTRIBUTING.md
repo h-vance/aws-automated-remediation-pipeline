@@ -4,12 +4,12 @@ Thank you for your interest in contributing to this project. As a portfolio piec
 
 ## How to Contribute
 
-1.  **Fork the repository.**
-2.  **Create a new branch** for your feature or bug fix: `git checkout -b feature/your-feature-name`.
-3.  **Implement your changes.** Ensure all Terraform code follows the established modular patterns and passes `terraform validate`.
-4.  **Add tests.** If adding a new remediation skill, include a simulation script or unit test to verify the logic.
-5.  **Run security scans.** Ensure your changes pass `checkov` and `trivy` scans.
-6.  **Submit a Pull Request.** Provide a clear description of the problem your change solves and the technical approach taken.
+1. **Fork the repository.**
+2. **Create a new branch** for your feature or bug fix: `git checkout -b feature/your-feature-name`.
+3. **Implement your changes.** Ensure all Terraform code follows the established modular patterns and passes `terraform validate`.
+4. **Add tests.** If adding a new remediation skill, include a simulation script or unit test to verify the logic.
+5. **Run security scans.** Ensure your changes pass `checkov` and `trivy` scans.
+6. **Submit a Pull Request.** Provide a clear description of the problem your change solves and the technical approach taken.
 
 ## Coding Standards
 
@@ -19,4 +19,4 @@ Thank you for your interest in contributing to this project. As a portfolio piec
 
 ## Security
 
-If you discover a security vulnerability, please open a GitHub Issue or contact the maintainer directly at hcollender788@gmail.com.
+If you discover a security vulnerability, please open a GitHub Issue or contact the maintainer directly at `hcollender788@gmail.com`.

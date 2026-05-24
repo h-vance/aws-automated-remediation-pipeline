@@ -9,9 +9,9 @@ This skill provides a secure, automated method for isolating a compromised EC2 i
 - Security Hub Insight: Critical vulnerability detected
 
 ## Analyze Phase
-1.  **Identify Resource:** Extract `InstanceId` from the trigger event.
-2.  **Verify State:** Ensure the instance is in a 'running' or 'stopped' state.
-3.  **Check Tags:** Verify the instance does not have an 'Exempt' tag.
+1. **Identify Resource:** Extract `InstanceId` from the trigger event.
+2. **Verify State:** Ensure the instance is in a 'running' or 'stopped' state.
+3. **Check Tags:** Verify the instance does not have an 'Exempt' tag.
 
 ## Remediation Strategy
 - **Action:** `ModifyInstanceAttribute`

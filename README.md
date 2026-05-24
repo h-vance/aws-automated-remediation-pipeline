@@ -1,6 +1,6 @@
 # AWS Automated Remediation Pipeline
 
-**Event-Driven Incident Response & Cloud Operations Automation**
+## Event-Driven Incident Response & Cloud Operations Automation
 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=FFFFFF)](https://python.org)&nbsp;[![Terraform](https://img.shields.io/badge/Terraform-844FBA?style=for-the-badge&logo=Terraform&logoColor=FFFFFF)](https://terraform.io)&nbsp;[![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=GitHub+Actions&logoColor=FFFFFF)](https://github.com/features/actions)
 
@@ -63,14 +63,14 @@ In high-pressure production environments, manual incident response is a bottlene
 
 ### Deployment
 
-1.  **Initialize Remote State:**
-    Run the Terraform configuration in `modules/global/state.tf` to create the S3 bucket and DynamoDB table for state management.
+1. **Initialize Remote State:**
+   Run the Terraform configuration in `modules/global/state.tf` to create the S3 bucket and DynamoDB table for state management.
 
-2.  **Configure OIDC:**
-    Deploy the OIDC module in `modules/global/oidc.tf` to establish the trust relationship between GitHub and AWS.
+2. **Configure OIDC:**
+   Deploy the OIDC module in `modules/global/oidc.tf` to establish the trust relationship between GitHub and AWS.
 
-3.  **Deploy Environment:**
-    Navigate to `environments/dev` and execute:
+3. **Deploy Environment:**
+   Navigate to `environments/dev` and execute:
     ```bash
     terraform init
     terraform apply

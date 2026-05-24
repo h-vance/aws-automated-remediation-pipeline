@@ -32,11 +32,11 @@ Goal: Define the system components using modular, reusable Terraform following t
 Goal: Build the "brain" that coordinates the remediation workflow.
 
 - [x] Design the Step Functions State Machine:
-    - State: Context Gathering
-    - Choice: Is Remediation Possible?
-    - State: Execute Fix
-    - State: Verification Check
-    - State: Notify Success/Failure
+  - State: Context Gathering
+  - Choice: Is Remediation Possible?
+  - State: Execute Fix
+  - State: Verification Check
+  - State: Notify Success/Failure
 - [x] Implement Step Functions definition in Terraform using ASL (Amazon States Language).
 
 ## Phase 5: Event-Driven Detection
